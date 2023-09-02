@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#failure'
+  get '/auth/google_oauth2', as: :sign_in
+  get '/sign_out', to: 'sessions#destroy', as: :sign_out
 end
