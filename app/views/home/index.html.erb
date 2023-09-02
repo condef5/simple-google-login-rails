@@ -1,2 +1,9 @@
-<h1>Hi :)</h1>
-<p>Welcome to m11</p>
+<% if current_user %>
+  <h1>Hi :)</h1>
+  <p>signed in as <%= current_user.name %></p>
+  <img src="<%= current_user.image %>" alt="">
+  <br>
+  <%= link_to 'sign out', sign_out_path %>
+<% else %>
+  <%= link_to 'sign in with google', sign_in_path %>
+<% end %>
